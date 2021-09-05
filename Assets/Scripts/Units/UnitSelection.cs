@@ -22,6 +22,8 @@ public class UnitSelection : MonoBehaviour
     {
         mainCamera = Camera.main;
 
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+
         Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
         GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
     }
@@ -34,12 +36,6 @@ public class UnitSelection : MonoBehaviour
 
     private void Update()
     {
-        //Temp fix
-        if (player == null)
-        {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-        }
-
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             StartSelectionArea();
@@ -64,7 +60,6 @@ public class UnitSelection : MonoBehaviour
             }
             SelectedUnits.Clear();
         }
-
         unitSelectionBox.gameObject.SetActive(true);
 
         startPos = Mouse.current.position.ReadValue();
@@ -93,8 +88,7 @@ public class UnitSelection : MonoBehaviour
         {
             Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-            if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layermask))
-            { return; }
+            if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layermask)) { return; }
 
             if (!hit.collider.TryGetComponent<Unit>(out Unit unit)) { return; }
 
@@ -114,7 +108,6 @@ public class UnitSelection : MonoBehaviour
 
         foreach (Unit unit in player.GetMyUnits())
         {
-
             if (SelectedUnits.Contains(unit)) { continue; }
             Vector3 screenPosition = mainCamera.WorldToScreenPoint(unit.transform.position);
 

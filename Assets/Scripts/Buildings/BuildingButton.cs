@@ -20,7 +20,6 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private GameObject buildingPreviewInstance;
     private Renderer buildingRendererInstance;
 
-
     private void Start()
     {
         mainCamera = Camera.main;
@@ -28,17 +27,13 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         iconImage.sprite = building.GetIcon();
         costText.text = building.GetCost().ToString();
 
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
+
         buildingCollider = building.GetComponent<BoxCollider>();
     }
 
     private void Update()
     {
-        //Temp fix
-        if (player == null)
-        {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-        }
-
         if (buildingPreviewInstance == null) { return; }
 
         UpdateBuildingPreview();
@@ -81,9 +76,20 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             buildingPreviewInstance.SetActive(true);
         }
 
+    
+        // Color color = Color.green;
+        // if (player.CanPlaceBuilding(buildingCollider, hit.point))
+        // {
+        //     color = Color.green;
+        // }
+        // else
+        // {
+        //     color = Color.red;
+        // }
+
         Color color = player.CanPlaceBuilding(buildingCollider, hit.point) ? Color.green : Color.red;
 
-        buildingRendererInstance.material.SetColor("_BaseColor", color);        
+        buildingRendererInstance.material.SetColor("_BaseColor", color);
     }
 
 }

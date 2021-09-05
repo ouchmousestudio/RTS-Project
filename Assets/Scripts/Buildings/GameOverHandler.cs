@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class GameOverHandler : NetworkBehaviour
 {
-
     public static event Action ServerOnGameOver;
     public static event Action<string> ClientOnGameOver;
 
     private List<UnitBase> bases = new List<UnitBase>();
+
     #region server
 
     public override void OnStartServer()
@@ -48,13 +48,13 @@ public class GameOverHandler : NetworkBehaviour
     #endregion
 
     #region Client
+    
     [ClientRpc]
     private void RpcGameOver(string winner)
     {
         ClientOnGameOver?.Invoke(winner);
     }
     
-
     #endregion
 
 }

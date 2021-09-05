@@ -24,9 +24,9 @@ public class UnitBase : NetworkBehaviour
 
     public override void OnStopServer()
     {
-        health.ServerOnDie -= HandleServerDeath;
-
         ServerOnBaseDespawned?.Invoke(this);
+
+        health.ServerOnDie -= HandleServerDeath;
     }
 
     [Server]
@@ -36,10 +36,6 @@ public class UnitBase : NetworkBehaviour
         
         NetworkServer.Destroy(gameObject);
     }
-
-    #endregion
-
-    #region client
 
     #endregion
 }

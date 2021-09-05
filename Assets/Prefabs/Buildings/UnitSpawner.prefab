@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3706930238234648909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3893751143074083256}
+  m_Layer: 0
+  m_Name: UnitSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3893751143074083256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706930238234648909}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8482225610503900170}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2859743171820940367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,13 +57,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   health: {fileID: 1285919199080122291}
-  unitPrefab: {fileID: 5105984671240659413, guid: 6097c4b36a6a443bab8d437f4c8b9de2, type: 3}
+  unitPrefab: {fileID: 674297413278934607, guid: de8b1cb0d0cbe4899abf686f9d05685a, type: 3}
   unitSpawnPoint: {fileID: 3893751143074083256}
   remainingUnitsText: {fileID: 1019374879153887277}
   unitProgressImage: {fileID: 7276752895428398483}
   maxUnitQueue: 5
   spawnMoveRange: 7
-  UnitSpawnTime: 5
+  UnitSpawnTime: 7
 --- !u!114 &6804186648386390253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,36 +96,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   aimAtPoint: {fileID: 6182241929568622552}
---- !u!1 &3706930238234648909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3893751143074083256}
-  m_Layer: 0
-  m_Name: UnitSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3893751143074083256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3706930238234648909}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8482225610503900170}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &567899257840236802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,16 +323,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6383296156386778433, guid: 7a5ec5fc276fc4c9bb230f8bc9ea5586, type: 3}
       propertyPath: m_Name
-      value: UnitSpawner
+      value: MidUnitSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 6715158664032484543, guid: 7a5ec5fc276fc4c9bb230f8bc9ea5586, type: 3}
       propertyPath: id
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715158664032484543, guid: 7a5ec5fc276fc4c9bb230f8bc9ea5586, type: 3}
+      propertyPath: cost
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6715158664032484543, guid: 7a5ec5fc276fc4c9bb230f8bc9ea5586, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: -2413806693520163455, guid: 626c1fdc4fab7457eabeff856c43de75, type: 3}
+      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6715158664032484543, guid: 7a5ec5fc276fc4c9bb230f8bc9ea5586, type: 3}
       propertyPath: price
       value: 80

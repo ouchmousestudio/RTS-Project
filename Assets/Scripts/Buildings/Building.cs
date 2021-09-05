@@ -52,15 +52,15 @@ public class Building : NetworkBehaviour
     #endregion
 
     #region Client
-    public override void OnStartClient()
+    
+    public override void OnStartAuthority()
     {
-        if (!isClientOnly || !hasAuthority) { return; }
         AuthorityOnBuildingSpawned?.Invoke(this);
     }
 
     public override void OnStopClient()
     {
-        if (!isClientOnly || !hasAuthority) { return; }
+        if (!hasAuthority) { return; }
         AuthorityOnBuildingDespawned?.Invoke(this);
     }
 
